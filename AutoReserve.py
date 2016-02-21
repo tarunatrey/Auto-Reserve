@@ -9,11 +9,16 @@ import time
 from splinter import Browser
 from selenium.webdriver.common.keys import Keys
 
-strUsername = 'XYZ@gmail.com'
-strPassword = 'PASSWORD\n'
+fname = 'user_credentials.txt'
 strDate = '01/01/2016'
 strTime = '1:00 PM'
-strDuration = '1.5 hours' 
+strDuration = '1.5 hours'
+
+filehandle = open(fname,'r')
+strUsername = filehandle.readline().rstrip()
+strPassword = filehandle.readline().rstrip()
+strPassword = strPassword + '\n'
+filehandle.close()
 
 
 with Browser() as browser:
