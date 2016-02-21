@@ -8,18 +8,20 @@
 import time
 from splinter import Browser
 from selenium.webdriver.common.keys import Keys
+from datetime import date, timedelta
 
 fname = 'user_credentials.txt'
-strDate = '01/01/2016'
-strTime = '1:00 PM'
+strTime = '6:00 PM'
 strDuration = '1.5 hours'
 
 filehandle = open(fname,'r')
 strUsername = filehandle.readline().rstrip()
 strPassword = filehandle.readline().rstrip()
-strPassword = strPassword + '\n'
 filehandle.close()
 
+strPassword = strPassword + '\n'
+strDate = date.today() + timedelta(days=14)
+strDate = strDate.strftime("%m/%d/%Y")
 
 with Browser() as browser:
     browser.visit('https://elan.activebuilding.com')
