@@ -38,14 +38,14 @@ with Browser() as browser:
     #select time for reservation
     el1 = browser.find_by_id('startTime')
     for option in el1.find_by_tag('option'):
-        if option.text == '1:00 PM':
+        if option.text == strTime:
             option.click()
             break
 
     #select duration for reservation
     el2 = browser.find_by_id('durationHours')
     for option in el2.find_by_tag('option'):
-        if option.text == '1.5 hours':
+        if option.text == strDuration:
             option.click()
             break
 
