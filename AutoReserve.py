@@ -22,24 +22,33 @@ with Browser() as browser:
     browser.find_by_id('email').fill(strUsername)
     browser.find_by_id('password').fill(strPassword)
     time.sleep(5)
-    browser.visit('https://elan.activebuilding.com/portal/reservations/step1/?amenityId=1741')
+    browser.visit('https://elan.activebuilding.com/portal/reservations/step1/?amenityId=1743')
 
     #select date for reservation
     browser.find_by_id('startDate').fill(strDate)
     browser.find_by_id('content').click()
 
     #select time for reservation
-    el = browser.find_by_id('startTime')
-    for option in el.find_by_tag('option'):
+    el1 = browser.find_by_id('startTime')
+    for option in el1.find_by_tag('option'):
         if option.text == '1:00 PM':
             option.click()
             break
 
     #select duration for reservation
-    el = browser.find_by_id('durationHours')
-    for option in el.find_by_tag('option'):
+    el2 = browser.find_by_id('durationHours')
+    for option in el2.find_by_tag('option'):
         if option.text == '1.5 hours':
             option.click()
             break
-    
+
+    #submit step1 for the form
+    browser.find_by_id('submit-reservation-step1').click()
+
+    #select checkbox to acknowledge rules and regulations
+    browser.find_by_id('approve-regulations').click()
+
+    #submit step2 for the form
+    browser.find_by_id('submit-reservation-step2').click()
+
     time.sleep(5)
